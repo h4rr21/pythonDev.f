@@ -1,0 +1,51 @@
+# -*- coding: utf-8 -*-
+
+file = open("wannacry","w")
+file.write("lorem ipsum")
+file.close()
+
+myList = [1, 2, 3, 4, 5, 6, 7]
+
+#print myList[-1]
+#print myList[2:5]
+#print myList[5:]
+#print myList[:5]
+#print myList[:]
+#print myList[:-1]
+
+myList.pop()
+#print myList
+myList.pop(2)
+#print myList
+myList.remove(5)
+#print myList
+myList.insert(5,6)
+#print myList
+
+#list_size = input("Dame tamaño de la lista: \t")
+
+#lista = []
+#for i in range(input("Dame tamaño de la lista: \t")):
+#    lista.append(raw_input("Dame uno elemento\t\t"))
+
+#print lista
+#lista = [for i in range(input("Dame tamaño de la lista: \t")) for i in range(input("Dame tamaño de la lista: \t"))]
+
+#print "\t\t".join(map(lambda x: "".join(raw_input("Dame uno elemento\t\t")) ,range(input("Dame tamaño de la lista: \t"))))
+
+ip = raw_input("dame la IP pa validar sup: \t")
+ip_lista = ip.split(".")
+
+if not len(ip_lista) == 4:
+    print "IP erronea \n\tERROR"
+else:
+    try:
+        for i in ip_lista:
+                if int(i) > 255 or int(i) < 1:
+                    print "ip mayor a 256 \n\tERROR"
+                    break
+        print "ip correcta"
+    except ValueError:
+                print "Una IP no tiene LETRAS \n\tERROR"
+
+
