@@ -1,0 +1,11 @@
+version: '2'
+services:
+  django-clase:
+    image: api_damnificados
+    #build: .
+    ports:
+      - '8000:8000'
+  database:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Passw0rd
