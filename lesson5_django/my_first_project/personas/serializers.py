@@ -23,6 +23,10 @@ class PersonasCreateSerializer(serializers.Serializer):
     sexo = serializers.CharField(max_length=5)
     tipo_de_personas = serializers.CharField(max_length=50)
 
+    def create(self, validated_data):
+        return Personas.objects.create(**validated_data)
+
 
 class PersonasModifySerializer(serializers.Serializer):
     tipo_de_personas = serializers.CharField(max_length=50)
+
