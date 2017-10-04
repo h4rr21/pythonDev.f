@@ -1,7 +1,7 @@
 FROM python:2.7
-WORKDIR /my_first_project
-COPY /my_first_project/requirements.txt /my_first_project/requirements.txt
+COPY my_first_project/requirements.txt /my_first_project/requirements.txt
 RUN pip install -r /my_first_project/requirements.txt
-COPY /my_first_project /my_first_project
+WORKDIR /my_first_project
+COPY my_first_project /my_first_project
+RUN pip install requests
 CMD gunicorn --bind 0.0.0.0:8000 my_first_project.wsgi:application
-

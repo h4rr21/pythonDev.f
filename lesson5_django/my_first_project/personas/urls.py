@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from .views import *
+from .views import PersonasApi
 
 urlpatterns = [
-    url(r'^$', index_dummy)
+    url(r'^$', PersonasApi.as_view())
 ]
