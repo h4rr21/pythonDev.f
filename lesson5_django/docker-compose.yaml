@@ -1,8 +1,8 @@
 version: '2'
 services:
   django-clase:
-    image: api_damnificados
-    #build: .
+    #image: api_damnificados
+    build: .
     ports:
       - '8000:8000'
   database:
