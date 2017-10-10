@@ -26,6 +26,18 @@ class PersonasCreateSerializer(serializers.Serializer):
     def create(self, validated_data):
         return Personas.objects.create(**validated_data)
 
+class PersonasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Personas
+        fields = ['nombre', 'edad', 'sexo', 'tipo_de_personas', 'id']
+        
+    def validate_edad(self, source):
+        if source <= 100:
+            return source
+            pass
+        else:
+            raise serializers.ValidationError("Mas de 100 SEEEGUUUROOO ???")
+            pass
 
 class PersonasModifySerializer(serializers.Serializer):
     tipo_de_personas = serializers.CharField(max_length=50)

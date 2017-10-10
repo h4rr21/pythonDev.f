@@ -11,6 +11,6 @@ TIPOSPERSONAS = (("Voluntario", "Voluntario"), ("Damnificado", "Damnificado"), (
 
 class Personas(models.Model):
     nombre = models.CharField(max_length=100)
-    edad = models.IntegerField(max_length=3)
+    edad = models.IntegerField()
     sexo = models.CharField(choices=SEXOS, max_length=5)
     tipo_de_personas = models.CharField(choices=TIPOSPERSONAS, max_length=50)

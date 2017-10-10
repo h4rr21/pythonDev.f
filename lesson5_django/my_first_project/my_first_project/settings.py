@@ -85,10 +85,21 @@ DATABASES = {
         'USER': 'root',
         'HOST': 'database',
         'PASSWORD': 'Passw0rd',
-        'PORT': '',
+        'PORT': '3306',
     }
 }
 
+# Local Database NO password on root 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'damnificadosDb',
+#        'USER': 'root',
+#        'HOST': 'localhost',
+#        'PASSWORD': '',
+#        'PORT': '3306',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
