@@ -28,4 +28,3 @@ class PersonasInLugares(models.Model):
     lugares_id = models.ForeignKey(Lugares)
     personas_id = models.ForeignKey(Personas)
 
-

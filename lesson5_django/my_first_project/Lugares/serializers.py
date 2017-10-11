@@ -1,10 +1,9 @@
 from rest_framework import serializers
-from .models import Lugares
+from .models import Lugares, PersonasInLugares
 
 
 class GetLugares(serializers.Serializer):
     nombre = serializers.CharField(max_length=102)
-
 
 class LugaresCreateSerializer(serializers.Serializer):
     calle = serializers.CharField(max_length=102)
@@ -23,3 +22,7 @@ class LugaresSerializer(serializers.ModelSerializer):
 class LugaresModifySerializer(serializers.Serializer):
     nombre = serializers.CharField(max_length=102)
 
+class PersonasInLugaresSerializaer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonasInLugares
+        fields = ['fecha', 'status', 'lugares_id','personas_id']
