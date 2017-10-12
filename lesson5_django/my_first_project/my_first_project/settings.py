@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'personas',
     'rest_framework',
     'Lugares',
-    'articulos'
+    'articulos',
+    'User'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,25 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+AUTH_USER_MODEL = "User.User"
+
+JWT_AUTH = {
+    'JWT_AUTH_HEADER_PREFIX': 'Auth',
+}
+
 ROOT_URLCONF = 'my_first_project.urls'
+
 
 TEMPLATES = [
     {

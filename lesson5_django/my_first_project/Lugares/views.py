@@ -37,3 +37,26 @@ class PersonasInLugaresApi(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+''' class PersonaTodosLugares(APIView):
+    def _getLugares(self, pk):
+        try:
+            return PersonasInLugares.objects.get(personas_id_id=pk)
+        except PersonasInLugares.DoesNotExist:
+
+            
+        lugaresdePersona = PersonasInLugares.objects.get(pk)
+
+
+
+
+    def _getPersona(self, pk):
+        try:
+            return Personas.objects.get(pk=pk)
+        except Personas.DoesNotExist:
+            raise Http404
+    
+    def get(self, request, pk):
+        persona = self._getPersona(pk)
+        serializer = PersonasSerializer(persona)
+        return Response(serializer.data, status=status.HTTP_200_OK ) '''
