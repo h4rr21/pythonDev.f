@@ -9,3 +9,4 @@ services:
     image: mysql
     environment:
       - MYSQL_ROOT_PASSWORD=Passw0rd
+      - MYSQL_DATABASE=damnificadosDb
