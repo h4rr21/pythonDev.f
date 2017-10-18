@@ -10,7 +10,7 @@ from serializers import LugaresSerializer
 import json
 
 class LugaresTest(TestCase):
-    def config(self):
+    def setUp(self):
         self.client = Client()
         self.primer_lugar = Lugares.objects.create(
             calle = "principal",
