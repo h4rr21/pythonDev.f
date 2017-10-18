@@ -13,7 +13,7 @@ class PersonasTest(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.primer_persona = Personas.objects.create(
+        self.primera_persona = Personas.objects.create(
             nombre="Juan Carlos",
             edad=35,
             sexo="M",
@@ -38,7 +38,6 @@ class PersonasTest(TestCase):
             "tipo_de_personas":"Otro"
         }
 
-        
 
     def test_get_all_personas(self):
         response = self.client.get(reverse("personas_end_point"))
@@ -48,8 +47,8 @@ class PersonasTest(TestCase):
         self.assertEquals(serializer.data,response.data)
 
     def test_get_persona(self):
-        response = self.client.get(reverse("persona_end_point", kwargs={'pk':self.primer_persona.id}))
-        persona = Personas.objects.get(pk=self.primer_persona.id)
+        response = self.client.get(reverse("persona_end_point", kwargs={'pk':self.primera_persona.id}))
+        persona = Personas.objects.get(pk=self.primera_persona.id)
         serializer = PersonasSerializer(persona)
         self.assertEquals(response.status_code, 200)
         self.assertEquals(serializer.data, response.data)
@@ -59,4 +58,16 @@ class PersonasTest(TestCase):
             data=json.dumps(self.persona_correcta_json),
             content_type='application/json')
         self.assertEquals(response.status_code, 201)
+
+    def test_delete_persona(self):
+        response = self.client.delete(reverse('persona_end_point', kwargs={'pk':self.segunda_persona.id}))
+        self.assertEqual(response.status_code, 204)
+    
+    def test_put_persona(self):
+        persona = Personas.objects.get(pk=self.primera_persona.id)
+        response = self.client.put(reverse('persona_end_point', kwargs={'pk':self.primera_persona.id}), 
+            data=json.dumps(self.persona_correcta_json),
+            content_type='application/json')
+        self.assertEquals(response.status_code, 202)
+        
 # Create your tests here.
