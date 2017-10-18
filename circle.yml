@@ -6,7 +6,7 @@ dependencies:
   override:
     - docker pull mysql
     - docker build -t docker-api-devf -f lesson5_django/Dockerfile lesson5_django
-    - docker run --name database mysql -e MYSQL_ROOT_PASSWORD=Passw0rd -e MYSQL_DATABASE=damnificadosDb -d mysql
+    - docker run --name database -e MYSQL_ROOT_PASSWORD=Passw0rd -e MYSQL_DATABASE=damnificadosDb -d mysql
 
 test:
   override:
