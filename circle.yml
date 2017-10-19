@@ -4,10 +4,17 @@ machine:
 
 dependencies:
   override:
+    - bash lesson5_django/setup-heroku.sh
     - docker pull mysql
     - docker build -t docker-api-devf -f lesson5_django/Dockerfile lesson5_django
     - docker run --name database -e MYSQL_ROOT_PASSWORD=Passw0rd -e MYSQL_DATABASE=damnificadosDb -d mysql
 
 test:
   override:
-    - docker run -it --link database:mysql docker-api-devf sh test.sh
+    - docker run -it --link database:mysql -e DJANGO_ENV=development docker-api-devf sh test.sh
+
+deployment:
+  qa:
+    branch: master
+    commands:
+      - sh lesson5_django/deploy.sh
